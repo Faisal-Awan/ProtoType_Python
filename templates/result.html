@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Result</title>
+
+
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 60px;
+            color: rgb(12, 46, 96);
+        }
+
+        form {
+            margin-top: 20px;
+            display: inline-block;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: rgb(12, 46, 96);
+
+        }
+
+        select {
+            width: 450px;
+            height: 35px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-left: 12px;
+            font-size: 17px;
+        }
+
+        .custom-option {
+            font-size: 17px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+            font-size: 18px;
+            font-weight: 500;
+            box-shadow: 5px 10px #ccc;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            text-align: left;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .custom-paragraph {
+            font-size: 25px;
+    }
+    </style>
+</head>
+<body>
+    <h1>Assessment Result</h1>
+    <p>Total Questions: {{ total_questions }}</p>
+    <p>Corrected Questions: {{ corrected_questions }}</p>
+    
+    <table border="1" style="margin-bottom: 80px; margin-top: 50px;">
+        <tr style="color:  rgb(12, 46, 96);">
+            <th>Student ID</th>
+            <th>Question</th>
+            <th>Student Selected Option</th>
+            <th>Correct Answer</th>
+            <th>Cognitive Level</th>
+            <th>Result</th>
+        </tr>
+        {% for response in responses %}
+        <tr>
+            <td>{{ response[0] }}</td>
+            <td style="text-align: left;">{{ response[1] }}</td>
+            <td>{{ response[2] }}</td>
+            <td>{{ response[3] }}</td>
+            <td  style="text-align: left;">{{ response[4] }}</td>
+            <td >{% if response[2] == response[3] %}True{% else %}False{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

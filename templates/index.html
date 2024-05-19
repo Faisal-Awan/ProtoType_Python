@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Assessment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 50px;
+            color: rgb(12, 46, 96);
+        }
+
+        form {
+            margin-top: 20px;
+            display: inline-block;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 25px;
+            color: rgb(12, 46, 96);
+
+        }
+
+        select {
+            width: 450px;
+            height: 35px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-left: 12px;
+            font-size: 17px;
+        }
+
+        .custom-option {
+        font-size: 17px;
+    }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+            font-size: 18px;
+            font-weight: 500;
+            box-shadow:5px 10px #ccc;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body style="display: flex; flex-direction: column; align-items: center; height: 100vh;">
+       
+    <h1>Online Student Assessment</h1>
+
+    <form method="post" action="{{ url_for('select_course') }}" style="margin-top: 10px;">
+        <hr />
+
+        <div style="font-size: 30px; text-align: center; margin-bottom: 30px; margin-top: 40px;">AvaiLable Courses</div>
+        <div style="display: inline-flex">
+        <label for="course">Select a course:</label>
+        <select name="course" id="course">
+            {% for course in courses %}
+            <option value="{{ course }}" class="custom-option">{{ course }}</option>
+            {% endfor %}
+        </select>
+        </div>
+        <div style="margin-top: 80px; text-align: center;">
+        <button type="submit" style="width: 120px;">Start Test</button>
+        </div>
+    </form>
+</body>
+
+</html>

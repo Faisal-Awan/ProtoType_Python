@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ course }} Test</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 60px;
+            color: rgb(12, 46, 96);
+        }
+
+        form {
+            margin-top: 20px;
+            display: inline-block;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: rgb(12, 46, 96);
+
+        }
+
+        select {
+            width: 450px;
+            height: 35px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-left: 12px;
+            font-size: 17px;
+        }
+
+        .custom-option {
+            font-size: 17px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+            font-size: 18px;
+            font-weight: 500;
+            box-shadow: 5px 10px #ccc;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .custom-paragraph {
+             font-size: 25px;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>{{ course }} Test</h1>
+    <form method="post" action="{{ url_for('record_response') }}">
+        {% for item in items %}
+        <div>
+            <!-- <input type="hidden" name="question_id_{{ item[0] }}" id="question_id_{{ item[0] }}" value="{{ item[0] }}">
+            <p class="custom-paragraph">{{ index }}.{{ item[3] }}</p> -->
+
+            <!-- {% set count = 1 %}
+            <input type="hidden" name="question_id_{{ item[0] }}" id="question_id_{{ item[0] }}" value="{{ item[0] }}">
+            <p class="custom-paragraph">{{ count }}. {{ item[3] }}</p>
+            {% set count = count + 1 %} -->
+
+                <input type="hidden" name="question_id_{{ item[0] }}" id="question_id_{{ item[0] }}" value="{{ item[0] }}">
+                <p class="custom-paragraph">{{ loop.index }}. {{ item[3] }}</p>
+            
+            <label><input type="radio" name="selected_option_{{ item[0] }}" value="A"> {{ item[4] }}</label><br>
+            <label><input type="radio" name="selected_option_{{ item[0] }}" value="B"> {{ item[5] }}</label><br>
+            <label><input type="radio" name="selected_option_{{ item[0] }}" value="C"> {{ item[6] }}</label><br>
+            <label><input type="radio" name="selected_option_{{ item[0] }}" value="D"> {{ item[7] }}</label><br>
+        </div>
+        {% endfor %}
+        <input type="hidden" name="course" value="{{ course }}">
+        <div style="margin-top: 80px; text-align: center;">
+            <button type="submit" style="width: 120px; margin-bottom: 100px;">Submit</button>
+        </div>
+
+    </form>
+</body>
+
+</html>
